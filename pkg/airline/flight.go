@@ -16,12 +16,15 @@ type Flight struct {
 }
 
 func NewFlight(aircraft Aircraft, departureTime time.Time, source string, destination string) *Flight {
-	return &Flight{
+	flight := &Flight{
 		Aircraft:      aircraft,
 		DepartureTime: departureTime,
 		Source:        source,
 		Destination:   destination,
 	}
+
+	AllFlights = append(AllFlights, flight)
+	return flight
 }
 
 func (f *Flight) BookSeat(count int) error {
