@@ -5,11 +5,11 @@ import "math/rand"
 type flightTicket struct {
 	BookingId int
 	Flight    *Flight
-	User      *User
+	User      User
 	SeatNo    int
 }
 
-func newBookFlight(flight *Flight, user *User, seatNo int) *flightTicket {
+func newBookFlight(flight *Flight, user User, seatNo int) *flightTicket {
 	return &flightTicket{
 		BookingId: rand.Int(),
 		Flight:    flight,
@@ -26,6 +26,6 @@ func (b *flightTicket) GetSeatNumber() int {
 	return b.SeatNo
 }
 
-func (b *flightTicket) GetUser() *User {
+func (b *flightTicket) GetUser() User {
 	return b.User
 }

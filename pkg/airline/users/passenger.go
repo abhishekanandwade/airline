@@ -18,3 +18,7 @@ func NewPassenger(name string) *Passenger {
 func (p *Passenger) GetRole() string {
 	return string(p.Role)
 }
+
+func (p *Passenger) GetName() string {
+	return p.Name
+}

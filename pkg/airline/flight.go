@@ -12,15 +12,17 @@ type Flight struct {
 	Source         string
 	Destination    string
 	AvailableSeats int
+	Price          int
 	mu             sync.RWMutex
 }
 
-func NewFlight(aircraft Aircraft, departureTime time.Time, source string, destination string) *Flight {
+func NewFlight(aircraft Aircraft, departureTime time.Time, source string, destination string, price int) *Flight {
 	flight := &Flight{
 		Aircraft:      aircraft,
 		DepartureTime: departureTime,
 		Source:        source,
 		Destination:   destination,
+		Price:         price,
 	}
 
 	AllFlights = append(AllFlights, flight)
@@ -45,6 +47,10 @@ func (f *Flight) GetAvailableSeats() int {
 	return f.AvailableSeats
 }
 
+func (f *Flight) GetAirline() string {
+	return f.Aircraft.GetAirline()
+}
+
 func (f *Flight) GetSource() string {
 	return f.Source
 }
@@ -55,4 +61,8 @@ func (f *Flight) GetDestination() string {
 
 func (f *Flight) GetDate() string {
 	return f.DepartureTime.Format(time.DateOnly)
+}
+
+func (f *Flight) GetPrice() int {
+	return f.Price
 }
